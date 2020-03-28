@@ -19,6 +19,8 @@ public class DishService {
 
     public Iterable<DishDTO> findDishes(@ApiIgnore Pageable pageable, String name){
         Restaurant restaurant = rr.findRestaurantByName(name);
-        return dr.findAll(pageable).map(DishDTO::from).filter(dishDTO -> restaurant.getId().equals(dishDTO.getRestaurantId()));
+        String id = restaurant.getId();
+        return dr.findAll(pageable).map(DishDTO::from).filter(dishDTO -> id.equals(dishDTO.getRestaurantId()))
+                .toList();
     }
 }

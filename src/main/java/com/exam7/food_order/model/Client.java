@@ -2,6 +2,7 @@ package com.exam7.food_order.model;
 
 import com.exam7.food_order.util.GenerateData;
 import com.exam7.food_order.util.Generator;
+import com.exam7.food_order.util.SecurityConfig;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -27,8 +28,12 @@ public class Client implements UserDetails {
         return Client.builder()
                 .mail(GenerateData.randomEmail())
                 .name(GenerateData.randomPersonName())
-                .pass(Generator.makePassword())
+                .pass(SecurityConfig.encoder().encode(Generator.makePassword()))
                 .build();
+    }
+
+    public void setPass(String pass){
+        this.pass = SecurityConfig.encoder().encode(pass);
     }
 
     @Override

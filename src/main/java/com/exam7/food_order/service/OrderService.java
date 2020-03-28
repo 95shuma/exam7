@@ -38,6 +38,6 @@ public class OrderService {
     }
 
     public Iterable<OrderDTO> findOrderByClientId(@ApiIgnore Pageable pageable, String id){
-        return or.findAll(pageable).map(OrderDTO::from).filter(orderDTO -> id.equals(orderDTO.getClientId()));
+        return or.findAll(pageable).map(OrderDTO::from).filter(orderDTO -> id.equals(orderDTO.getClientId())).toList();
     }
 }

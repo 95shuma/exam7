@@ -29,6 +29,11 @@ public class Preload {
             or.deleteAll();
             rr.deleteAll();
 
+            Client client = Client.addClient();
+            client.setName("admin");
+            client.setPass("admin");
+            cr.save(client);
+
             List<Client>clients = Stream.generate(Client::addClient)
                     .limit(20)
                     .collect(Collectors.toList());
@@ -40,11 +45,11 @@ public class Preload {
             rr.saveAll(restaurants);
 
             List<Dish>dishes = Stream.generate(Dish::addDish)
-                    .limit(30)
+                    .limit(100)
                     .collect(Collectors.toList());
 
-            for (Dish dish:dishes)
-                dish.setRestaurant(restaurants.get(r.nextInt(10)));
+            for (Dish dish:dishes){
+                dish.setRestaurant(restaurants.get(r.nextInt(10)));}
 
             dr.saveAll(dishes);
 
@@ -55,6 +60,7 @@ public class Preload {
                 order.setClient(clients.get(r.nextInt(20)));
                 order.setDish(dishes.get(r.nextInt(30)));
             }
+            or.saveAll(orders);
 
             System.out.println("done");
         };
