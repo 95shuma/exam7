@@ -13,4 +13,5 @@ public class Client {
     private String id;
     private String name;
     private String mail;
+    private String pass;
 }

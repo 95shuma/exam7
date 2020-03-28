@@ -4,7 +4,10 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Document(collection = "restaurants")
 @Data
@@ -14,4 +17,6 @@ public class Restaurant {
     private String id;
     private String name;
     private String description;
+    @DBRef
+    private List<Dish> dishes;
 }

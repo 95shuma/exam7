@@ -38,10 +38,10 @@ public final class GenerateData {
     private static List<PlaceName> placeNames;
 
     static {
-        personNames = readStrings(Paths.get("data", "list-person"));
-        domains = readStrings(Paths.get("data", "list-domains"));
-        placeNames = readPlaces(Paths.get("data", "list-places"));
-        dishNames = readDishes(Paths.get("data", "list-foods"));
+        personNames = readStrings(Paths.get("list-person"));
+        domains = readStrings(Paths.get("list-domains"));
+        placeNames = readPlaces(Paths.get("list-places"));
+        dishNames = readDishes(Paths.get("list-foods"));
     }
 
     public static String randomEmail() {
