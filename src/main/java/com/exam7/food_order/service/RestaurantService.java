@@ -1,6 +1,5 @@
 package com.exam7.food_order.service;
 
-import com.exam7.food_order.dto.DishDTO;
 import com.exam7.food_order.dto.RestaurantDTO;
 import com.exam7.food_order.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,4 @@ public class RestaurantService {
         return rr.findAll(pageable).map(RestaurantDTO::from);
     }
 
-
-    public Iterable<DishDTO> findDishesByRN(@ApiIgnore Pageable pageable, String name){
-        return rr.findAll(pageable).map(DishDTO::from).filter(dishDTO -> name.equals(dishDTO.getName()));
-    }
 }

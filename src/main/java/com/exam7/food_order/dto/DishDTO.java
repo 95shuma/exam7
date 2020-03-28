@@ -13,13 +13,17 @@ import java.util.List;
 public class DishDTO {
     private String id;
     private String name;
-    private List<Dish>dishes;
+    private String type;
+    private int price;
+    private String restaurantId;
 
-    public static DishDTO from(Restaurant restaurant){
+    public static DishDTO from(Dish dish){
         return builder()
-                .id(restaurant.getId())
-                .name(restaurant.getName())
-                .dishes(restaurant.getDishes())
+                .id(dish.getId())
+                .name(dish.getName())
+                .type(dish.getType())
+                .price(dish.getPrice())
+                .restaurantId(dish.getRestaurant().getId())
                 .build();
     }
 }

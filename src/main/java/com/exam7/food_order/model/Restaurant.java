@@ -1,5 +1,6 @@
 package com.exam7.food_order.model;
 
+import com.exam7.food_order.util.GenerateData;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -17,6 +18,12 @@ public class Restaurant {
     private String id;
     private String name;
     private String description;
-    @DBRef
-    private List<Dish> dishes;
+
+    public static Restaurant addRestaurant(){
+        GenerateData.PlaceName gp = GenerateData.randomPlace();
+        return Restaurant.builder()
+                .name(gp.getName())
+                .description(gp.getDescription())
+                .build();
+    }
 }

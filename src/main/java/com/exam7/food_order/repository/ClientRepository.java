@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ClientRepository extends CrudRepository<Client,String> {
     Client findClientById(String id);
+    Client findClientByName(String name);
 }

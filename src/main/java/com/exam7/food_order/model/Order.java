@@ -19,4 +19,10 @@ public class Order {
     @DBRef
     private Dish dish;
     private LocalDateTime date;
+
+    public static Order addOrder(){
+        return Order.builder()
+                .date(LocalDateTime.now())
+                .build();
+    }
 }
