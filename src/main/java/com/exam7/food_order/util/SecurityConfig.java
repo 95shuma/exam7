@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // должно быть доступно только
         // после авторизации пользователя
         http.authorizeRequests().antMatchers("/order/*").fullyAuthenticated();
-        http.authorizeRequests().antMatchers("/client/orders/*").fullyAuthenticated();
+        http.authorizeRequests().antMatchers("/id/{id}/orders/*").fullyAuthenticated();
         // Правило 2: Разрешить всё остальные запросы
         http.authorizeRequests().anyRequest().permitAll();
 

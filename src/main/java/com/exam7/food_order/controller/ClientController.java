@@ -20,7 +20,7 @@ public class ClientController {
         this.os = os;
     }
 
-    @GetMapping("/orders/{id}")
+    @GetMapping("/id/{id}/orders")
     public Iterable<OrderDTO> findOrder(@ApiIgnore Pageable pageable, @PathVariable("id") String id){
         return os.findOrderByClientId(pageable,id);
     }
